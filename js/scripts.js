@@ -2,6 +2,8 @@ var onlyLetters = "";
 var cryptosquare = [];
 
 
+
+// return boolean if input is a letter
 function checkChar(letter){
   if(letter.match(/[a-z]/i)){
     return true;
@@ -9,13 +11,14 @@ function checkChar(letter){
   return false;
 }
 
+// with an already declared empty array and the amount of arrays you can created an array of arrays
 function nestedArrayMaker(emptyArray, amount){
   for(i = 1; i <= amount; i++){
-    emptyArray.push(new Array());
+    emptyArray.push([]);
   }
 }
 
-
+// it create a single word string of listed characters 
 function onlyLettersMaker(listOfChar){
   listOfChar.forEach(function(letter){
       if (checkChar(letter)) {
