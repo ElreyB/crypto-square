@@ -18,13 +18,30 @@ function nestedArrayMaker(emptyArray, amount){
   }
 }
 
-// it create a single word string of listed characters 
+// it create a single word string of listed characters
 function onlyLettersMaker(listOfChar){
   listOfChar.forEach(function(letter){
       if (checkChar(letter)) {
         onlyLetters += letter;
       }
     });
+}
+
+
+// populate nested array
+function populateArrays(oneString){
+
+  var messageArray = oneString.split("");
+  var index = 0;
+
+  messageArray.forEach(function(message){
+    nestedArrays[index].push(message);
+    index++;
+    // still nees right sqaure number
+    if(index === 6){
+      index = 0;
+    }
+  });
 }
 
 
@@ -35,6 +52,6 @@ $(document).ready(function(){
     onlyLettersMaker(lettersInput);
 
     nestedArrayMaker(cryptosquare, 6);
-    $(".result").text(cryptosquare);
+    $(".result").text(onlyLetters);
   });
 });
