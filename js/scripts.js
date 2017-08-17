@@ -1,3 +1,7 @@
+var onlyLetters = "";
+var cryptosquare = [];
+
+
 function checkChar(letter){
   if(letter.match(/[a-z]/i)){
     return true;
@@ -5,18 +9,29 @@ function checkChar(letter){
   return false;
 }
 
+function nestedArrayMaker(emptyArray, amount){
+  for(i = 1; i <= amount; i++){
+    emptyArray.push(new Array());
+  }
+}
+
+
+function onlyLettersMaker(listOfChar){
+  listOfChar.forEach(function(letter){
+      if (checkChar(letter)) {
+        onlyLetters += letter;
+      }
+    });
+}
+
 
 $(document).ready(function(){
   $("form#sentenceform").submit(function(event){
     event.preventDefault();
     var lettersInput = $("input#sentence").val().split("");
-    var onlyLetters = "";
+    onlyLettersMaker(lettersInput);
 
-    lettersInput.forEach(function(letter){
-      if (checkChar(letter)) {
-        onlyLetters += letter
-      }
-    });
-    $(".result").text(onlyLetters);
+    nestedArrayMaker(cryptosquare, 6);
+    $(".result").text(cryptosquare);
   });
 });
